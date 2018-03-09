@@ -1,0 +1,8 @@
+Sorting:
+    insertion sort
+    mergesort - sorting algorithm that is guaranteed to run in linearithmic time
+    quicksort - is used more widely than any other sorting algorithm
+    priority queue, heapsort
+Searching: binary search trees, red–black trees, and hash tables.
+Graphs: depth-first search, breadth-first search, minimum spanning trees, and shortest paths.
+Strings: radix sorting, substring search, tries, regular expressions, and data compression.

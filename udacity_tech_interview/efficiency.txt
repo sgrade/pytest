@@ -1,0 +1,52 @@
+1) Time to execute and 2) Space to store
+
+Time efficiency notation:
+o(n)
+n - algebraic expression
+n - input
+Example: o(2n + 2)
+We focus on worst case scenario
+But there is also best case, average case efficiency
+When we combine them, we talk about big o
+O(n)
+! I should specify to the interviewer which case I am talking about (worst, best, average)
+
+Space efficiency uses the same notation: O(n)
+
+=======
+НЕПРАВИЛЬНО ВСЁ!
+Отталкиваться не от того, сколько операций в одном цикле,
+а от того, сколько раз повторится цикл - n
+
+example1
+n - number of manatees
+1 - iterate to next list (manatee)
+2 - get value for the key
+3 - print value
+Worst case scenario:
+O(3n)
+Правильный ответ: О(n)
+
+example2
+1 - iterate to list 0
+2 - get value for the key
+3 - get value for the key
+O(3)
+Правильный ответ: О(1)
+
+example3
+n - number of manatees
+m - number of properties
+1 - get the property
+2 - print the property
+Worst case scenario:
+O(*2m*n)
+Правильный ответ: О(nm)
+
+example4
+1 get age1
+2 get age2
+3 compare age1 and age2
+4 write the name of the manatee
+O(n*n*4)
+Правильный ответ: О(n^2)
