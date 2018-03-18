@@ -27,7 +27,7 @@ class Graph(object):
         """An iterative implementation of Breadth First Search
         iterating through a node's edges. The output should be a list of
         numbers corresponding to the traversed nodes.
-        ARGUMENTS: start_node_num is the node number (integer)
+        ARGUMENTS: start_node_num is the node number (x)
         MODIFIES: the value of the visited property of nodes in self.nodes
         RETURN: a list of the node values (integers)."""
         node = self.find_node(start_node_num)

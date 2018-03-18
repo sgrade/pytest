@@ -35,7 +35,7 @@ The excellent unittest library that ships with Python by default. Here’s a qui
            with self.assertRaises(TypeError):
                s.split(2)
 
-   unittest.main(exit=False)
+   unittest.process_file(exit=False)
 The versatile pytest. The above snippet of code would look like the following when written for pytest:
    import pytest
 
@@ -53,7 +53,7 @@ The versatile pytest. The above snippet of code would look like the following wh
        with pytest.raises(TypeError):
            s.split(2)
 
-   pytest.main()
+   pytest.process_file()
 mock is also available if you need to stub out some behavior. Here’s a quick usage example:
    from mock import Mock
 
@@ -62,7 +62,8 @@ mock is also available if you need to stub out some behavior. Here’s a quick u
    mock.method.assert_called_with('this should break')
 mock can of course be combined with unittest and pytest for even more fun.
 
-hypothesis is available for property-based testing in Python. You can read more about it on their website, but here’s a stubbed example of how you might test that an encoding and decoding function both work:
+hypothesis is available for property-based testing in Python. You can read more about it on their website,
+but here’s a stubbed example of how you might test that an encoding and decoding function both work:
    from hypothesis import given
    from hypothesis.strategies import text
 

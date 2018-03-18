@@ -1,0 +1,20 @@
+[DEFAULT]
+parameter3 = Value3
+parameter2 = Value2
+parameter1 = Value1
+
+[SECTION1]
+parameter1 = Value1
+parameter2 = Value2
+parameter3 = Value3
+
+[DEFAULT]
+parameter3 = Value3
+parameter2 = Value2
+parameter1 = Value1
+
+[SECTION1]
+parameter1 = Value1
+parameter2 = Value2
+parameter3 = Value3
+
