@@ -1,7 +1,7 @@
 import subprocess
 import logging
 
-logging.basicConfig(filename='ping.log',level=logging.DEBUG)
+logging.basicConfig(filename='ping.log', level=logging.DEBUG)
 
 with open('ip_addresses.txt') as f:
     for address in f:

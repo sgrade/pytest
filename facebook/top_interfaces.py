@@ -48,7 +48,11 @@ class TopTwo:
     def get_report(self):
         """Generates console report form 'top_utilization' dictionary"""
         self.process_file()
+        # print('TYPE:', type(self.top_utilization))
+        # it is a dictionary
         srtd = sorted(self.top_utilization.items())
+        # print('TYPE:', type(srtd))
+        # after sorted applied, it is a list
         srtd.reverse()
         print('Top', self.number, 'interfaces')
         for tpl in srtd:

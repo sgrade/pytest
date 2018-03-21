@@ -17,9 +17,14 @@ class DnsHelper:
 
         with open(file) as f:
             for line in f:
-                print(socket.gethostbyaddr(line.strip()), sep=' ')
+                # hostname is the [0] item in the tuple, returned by socket.gethostbyaddr
+                print(socket.gethostbyaddr(line.strip())[0])
 
 
 x = DnsHelper()
+
+print('\nResolving hostnames into IPs:')
 x.resolve_hostname_into_ip('hostnames.txt')
+
+print('\nResolving IPs into hostnames:')
 x.resolve_ip_into_hostname('ip_addresses.txt')

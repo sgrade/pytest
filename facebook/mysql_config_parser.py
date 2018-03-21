@@ -1,4 +1,6 @@
 import configparser
+# argparse is not used, show just to remind myself (it is a similar construct):
+# from argparse import ArgumentParser
 
 
 def write_config():
@@ -21,7 +23,7 @@ def read_config(file):
     config = configparser.ConfigParser()
     config.read(file)
     print(config.sections())
-    print(config['client'])
+    # print(config['client'])
     for key in config['client']:
         print(key, ': ', config['client'][key], sep='')
         # print(config['client'][key])
