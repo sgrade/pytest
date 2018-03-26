@@ -1,0 +1,4 @@
+file tto with wwords
+this line to contain erase
+this  line to too
+end

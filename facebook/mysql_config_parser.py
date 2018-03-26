@@ -29,4 +29,5 @@ def read_config(file):
         # print(config['client'][key])
 
 
+write_config()
 read_config('my.cnf')

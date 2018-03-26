@@ -14,10 +14,10 @@ O(n)
 Space efficiency uses the same notation: O(n)
 
 =======
-НЕПРАВИЛЬНО ВСЁ!
 Отталкиваться не от того, сколько операций в одном цикле,
 а от того, сколько раз повторится цикл - n
 
+То, что ниже НЕПРАВИЛЬНО ВСЁ!
 example1
 n - number of manatees
 1 - iterate to next list (manatee)

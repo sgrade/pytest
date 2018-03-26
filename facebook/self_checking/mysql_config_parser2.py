@@ -4,9 +4,8 @@ import configparser
 def parse_config(filename):
     f = configparser.ConfigParser()
     f.read(filename)
-    print(f.sections())
-    for key in f['client']:
-        print(key, ': ', f['client'][key], sep='')
+    for i in f['client']:
+        print(f['client'][i])
 
 
 conf = 'my.cnf'

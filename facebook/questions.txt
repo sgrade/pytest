@@ -1,0 +1,13 @@
+Write a script that integrate or manage the state and configuration of the applications
+    we build/run around MySQL, monitoring, alerting systems.
+Or write a script to poll a number of network devices;
+    and general questions around monitoring and automation;
+Write a function to sort an array;
+Write a function to search for specific words in a file and remove them from the file;
+Write a function to remove duplicates from an array;
+Write a function that reads a list of hostnames and resolves each IP address and print them;
+Write a function that monitors a running application, for example:
+    parse one of the memory columns from the output of vmstat or the free command.
+    And if the memory value exceeds a certain threshold for more than a certain timeframe,
+    then print a report to alert the Ops team
+
