@@ -31,6 +31,9 @@
 # Velociraptor,2.72,bipedal
 
 
+import math
+
+
 class CheckDinosaurs:
 
     def __init__(self, file1, file2):
@@ -40,78 +43,91 @@ class CheckDinosaurs:
         self._file1_as_a_string =
          """
 
+        self._f1 = file1
+        self._f2 = file2
+
         self._list_of_names_with_bipedal = list()
 
-        pass
+        self._dict_with_parameters_for_speed_calculations = {
+            name: [0, 0] for name in self._list_of_names_with_bipedal
+        }
 
-    get_bipedal(self):
-    """return the list of bipedal ones from the second file"""
-    bipedal_list = list()
-    with open('dataset2.csv') as f2:
-        f2_as_a_list_of_lines = f2.readlines()
-        for dino in f2_as_a_list_of_lines:
-            # \n
-            if dino.split(',')[-1].strip() == 'bipedal'
-                bipedal_list.append(dino)
-    return bipedal_list
+        self._bipedal_dict_with_speed = dict()
+
+    def _get_bipedal(self):
+        """return the list of bipedal ones from the second file"""
+        # bipedal_list = list()
+        with open('dataset2.csv') as f2:
+            f2_as_a_list_of_lines = f2.readlines()
+            for dino in f2_as_a_list_of_lines:
+                # \n
+                if dino.split(',')[-1].strip() == 'bipedal':
+                    self._list_of_names_with_bipedal.append(dino)
+        return self._list_of_names_with_bipedal
+
+    def _get_data_for_speed_calculations(self):
+        """
+
+        :return:
+        get bipedal list and do some list comprehensions to get speed
+        :return: dict: name:speed
+        a = dict{
+            name: [leg_length, stride_length]
+        }
+        """
+
+        with open(self._f1) as f1:
+            """Docstring later"""
+            # Processing f1:
+            f1_as_a_list_of_lines = f1.readlines()
+            for element in self._list_of_names_with_bipedal:
+                name = element.split(',')[0]
+                for row in f1_as_a_list_of_lines:
+                    if row.startswith(name):
+                        leg_length = float(row.split(',')[1])
+                        self._dict_with_parameters_for_speed_calculations[name] = [leg_length, 0]
+
+        with open(self._f2) as f2:
+            """Docstring later"""
+            f2_as_a_list_of_lines = f2.readlines()
+            for element in self._list_of_names_with_bipedal:
+                name = element.split(',')[0]
+                try:
+                    for row in f2_as_a_list_of_lines:
+                        if row.startswith(name):
+                            stride_length = float(row.split(',')[1])
+                            self._dict_with_parameters_for_speed_calculations[name][-1] = stride_length
+                except KeyError:
+                    # print('there is not enough information to calculate speed for', name)
+                    pass
+
+        return self._dict_with_parameters_for_speed_calculations
+
+    def _calculate_speed(self):
+        # calculating speed
+        g = 9.8
+        for dino, parameters in self._dict_with_parameters_for_speed_calculations.items():
+            stride_len = parameters[-1]
+            leg_len = parameters[0]
+            # speed = ((STRIDE_LENGTH / LEG_LENGTH) - 1) * SQRT(LEG_LENGTH * g)
+            speed = ((stride_len / leg_len) - 1) * math.sqrt(leg_len * g)
+            self._bipedal_dict_with_speed[speed] = dino
+
+        return self._bipedal_dict_with_speed
+
+    def sort_by_speed(self):
+
+        self._get_bipedal()
+
+        self._get_data_for_speed_calculations()
+
+        self._calculate_speed()
+
+        # sort from fastest to slowest
+        x = reversed(sorted(self._bipedal_dict_with_speed.items()))
+        for item in x:
+            print(item[1])
 
 
-calculate_speed(self):
-"""get bipedal list and do some list comprehensions to get speed
-return: dict: name:speed
-"""
-"""
-a = dict{
-    name: [leg_length, stride_length]
-}
-
-"""
-dict_with_parameters_for_speed_calculations = {name: [0, 0] for name in self._list_of_names_with_bipedal}
-
-with open('dataset1.csv') as f1:
-    """Docstring later"""
-
-    # Processing f1:
-    f1_as_a_list_of_lines = f1.readlines()
-    for name in self._list_of_names_with_bipedal:
-        for row in f1_as_a_list_of_lines:
-            if row.startswith(name):
-                leg_length = float(row.split(',')[1])
-                dict_with_parameters_for_speed_calculations[name] = [leg_length, 0]
-
-    # Processing f2:
-    f2_as_a_list_of_lines = f2.readlines()
-    for name in self._list_of_names_with_bipedal:
-        for row in f2_as_a_list_of_lines:
-            if row.startswith(name):
-                stride_length = float(row.split(',')[1])
-                dict_with_parameters_for_speed_calculations[name][-1] = stride_lenght
-
-    # calculating speed
-
-    # speed formula
-    speed =
-
-    # speed = 0
-return bipedal_list_with_speed
-
-sort_by_speed(self):
-"""retrurn sorted list"""
-# Check if below requires any input parameter
-# get our bi_list
-bi_list = self.get_bipedal()
-
-# get names from bi_list
-for element in bi_list:
-    self._list_of_names_with_bipedal.append(element.split(',')[0])
-
-# for each name calculate speed
-
-
-# for each name add speed to bi_list
-
-# sort it
-return sorted_by_speed
-
-x = CheckDinosaurs()
-print(x.sort_by_speed())
+x = CheckDinosaurs('dataset1.csv', 'dataset2.csv')
+x.sort_by_speed()
