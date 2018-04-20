@@ -25,6 +25,25 @@ class Solution:
         :rtype: int
         """
 
+        # solution is a Python version of leetcode's Java solution
+        if prices:
+            minprice = max(prices)
+            maxprofit = 0
+            for element in prices:
+                print('new element', element)
+                if element < minprice:
+                    print('element < minprice, then new minprice:', element)
+                    minprice = element
+                elif element - minprice > maxprofit:
+                    print('new maxprofit:', element - minprice)
+                    maxprofit = element - minprice
+
+            return maxprofit
+        else:
+            return 0
+
+        """
+        # below result: " Time Limit Exceeded"
         def get_max_profit(prs, min_pr):
             # If not initialized, max_pr might be referenced before assignment
             # print('prs:', prs)
@@ -53,10 +72,10 @@ class Solution:
             prices.remove(min_price)
         else:
             return max_profit
-
+        """
 
 sol = Solution()
-# inp = [7, 1, 5, 3, 6, 4]    # Expected: 5
+inp = [7, 1, 5, 3, 6, 4]    # Expected: 5
 # inp = [7, 6, 4, 3, 1]    # Expected: 0
 # inp = [7, 1, 6, 3, 2]    # Expected: 5
 # inp = []    # Expected: 0
