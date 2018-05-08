@@ -9,6 +9,8 @@ Credits:
 Special thanks to @ts for adding this problem and creating all test cases.
 """
 
+import collections
+
 
 class Solution:
     def majorityElement(self, nums):
@@ -16,6 +18,12 @@ class Solution:
         :type nums: List[int]
         :rtype: int
         """
+
+        # https://leetcode.com/problems/majority-element/solution/
+        # Approach #2 HashMap [Accepted]
+
+        counts = collections.Counter(nums)
+        return max(counts.keys(), key=counts.get)
 
         """
         # Submission Result: Time Limit Exceeded
