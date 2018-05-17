@@ -19,3 +19,29 @@ What if the inputs contain unicode characters? How would you adapt your solution
 """
 
 
+class Solution:
+    def isAnagram(self, s, t):
+        """
+        :type s: str
+        :type t: str
+        :rtype: bool
+        """
+
+        # Too slow: "Your runtime beats 3.43 % of python3 submissions."
+        s_list = list(s)
+        for char in t:
+            try:
+                s_list.remove(char)
+            except ValueError:
+                return False
+        if not s_list:
+            return True
+        else:
+            return False
+
+
+sol = Solution()
+print(sol.isAnagram('anagram', 'nagaram'))  # True
+print(sol.isAnagram('rat', 'car'))          # False
+print(sol.isAnagram('ab', 'a'))             # False
+print(sol.isAnagram('a', 'ab'))             # False
