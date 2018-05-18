@@ -27,7 +27,43 @@ class Solution:
         :rtype: bool
         """
 
+        # https://leetcode.com/problems/valid-anagram/solution/
+
+        # Approach  # 1 (Sorting) [Accepted]
+        # 76 ms: Your runtime beats 52.83 % of python3 submissions.
+        """
+        if len(s) != len(t):
+            return False
+
+        return sorted(list(s)) == sorted(list(t))
+        """
+
+        # Approach  # 2 (Hash Table) [Accepted]
+        """
+        ДОДЕЛАТЬ!
+        if len(s) != len(t):
+            return False
+        hash_list = dict()
+        
+        
+        for char in s:
+            if hash_list[char]:
+                hash_list[char] += 1
+            else:
+                hash_list.update({char:1})
+        for char in t:
+            try:
+                hash_list[char] -= 1
+            except KeyError:
+                return False
+            if hash_list[char] < 0:
+                return False
+        return True
+        """
+
+        # My own
         # Too slow: "Your runtime beats 3.43 % of python3 submissions."
+        """
         s_list = list(s)
         for char in t:
             try:
@@ -38,6 +74,7 @@ class Solution:
             return True
         else:
             return False
+        """
 
 
 sol = Solution()
