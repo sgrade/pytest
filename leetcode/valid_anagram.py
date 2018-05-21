@@ -30,7 +30,7 @@ class Solution:
         # https://leetcode.com/problems/valid-anagram/solution/
 
         # Approach  # 1 (Sorting) [Accepted]
-        # 76 ms: Your runtime beats 52.83 % of python3 submissions.
+        # 76 ms: "Your runtime beats 52.83 % of python3 submissions."
         """
         if len(s) != len(t):
             return False
@@ -39,18 +39,18 @@ class Solution:
         """
 
         # Approach  # 2 (Hash Table) [Accepted]
-        """
-        ДОДЕЛАТЬ!
+        # 52 ms: "Your runtime beats 86.84 % of python3 submissions."
         if len(s) != len(t):
             return False
+
         hash_list = dict()
         
-        
         for char in s:
-            if hash_list[char]:
+            try:
                 hash_list[char] += 1
-            else:
-                hash_list.update({char:1})
+            except KeyError:
+                hash_list[char] = 1
+
         for char in t:
             try:
                 hash_list[char] -= 1
@@ -59,7 +59,6 @@ class Solution:
             if hash_list[char] < 0:
                 return False
         return True
-        """
 
         # My own
         # Too slow: "Your runtime beats 3.43 % of python3 submissions."
