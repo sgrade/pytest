@@ -21,6 +21,7 @@ class Solution:
         :type nums: List[int]
         :rtype: int
         """
+
         """
         Your runtime beats 27.85 % of python3 submissions
         nums.sort()
@@ -37,9 +38,20 @@ class Solution:
             i += 1
         """
 
+        """
+        # https://leetcode.com/problems/missing-number/solution/
+        # Approach #2 HashSet [Accepted]
+        Your runtime beats 19.75 % of python3 submissions.
+        nums_set = set(nums)
+        for number in range(len(nums) + 1):
+            if number not in nums_set:
+                return number
+        """
+
+
 sol = Solution()
 # inp = [3,0,1]
-inp = [9,6,4,2,3,5,7,0,1]
+# inp = [9,6,4,2,3,5,7,0,1]
 # inp = [0] # expected 1
-# inp = [0, 1]    # expected 2
+inp = [0, 1]    # expected 2
 print(sol.missingNumber(inp))
