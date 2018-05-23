@@ -41,10 +41,16 @@ class Solution:
         """
         # https://leetcode.com/problems/missing-number/solution/
         # Approach #2 HashSet [Accepted]
-        Your runtime beats 19.75 % of python3 submissions.
+        # "Your runtime beats 19.75 % of python3 submissions."
         nums_set = set(nums)
         for number in range(len(nums) + 1):
             if number not in nums_set:
+                return number
+        """
+        """
+        #  "Time Limit Exceeded"
+        for number in range(len(nums) + 1):
+            if number not in nums:
                 return number
         """
 
