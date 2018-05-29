@@ -54,6 +54,13 @@ class Solution:
                 return number
         """
 
+        # Approach #4 Gauss' Formula [Accepted]
+        # Runtime: 44 ms
+        # Your runtime beats 99.54 % of python3 submissions.
+        expected_sum = len(nums) * (len(nums) + 1) // 2
+        actual_sum = sum(nums)
+        return expected_sum - actual_sum
+
 
 sol = Solution()
 # inp = [3,0,1]
