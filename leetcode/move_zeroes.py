@@ -20,8 +20,21 @@ class Solution:
         :type nums: List[int]
         :rtype: void Do not return anything, modify nums in-place instead.
         """
+        # Runtime: 112 ms
+        # Your runtime beats 26.76 % of python3 submissions.
+        i = 0
+        while True:
+            try:
+                nums.remove(0)
+                i += 1
+            except ValueError:
+                while i > 0:
+                    nums.append(0)
+                    i -= 1
+                print(nums)
+                break
 
 
 sol = Solution()
 inp = [0, 1, 0, 3, 12]
-print(sol.moveZeroes(inp))
+sol.moveZeroes(inp)
