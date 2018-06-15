@@ -13,6 +13,7 @@ return 2.
 Note: You may assume the string contain only lowercase letters.
 """
 
+
 class Solution:
     def firstUniqChar(self, s):
         """
