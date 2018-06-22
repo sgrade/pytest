@@ -29,6 +29,9 @@ class Solution:
         :rtype: ListNode
         """
 
+        # Runtime: 128 ms
+        # Your runtime beats 49.65 % of python3 submissions.
+
         def get_number(inp):
             output = ""
             while inp:
@@ -36,22 +39,30 @@ class Solution:
                 inp = inp.next
             return int(output)
 
-        def create_linked_list(first, nxt=()):
-            lst = ListNode(first)
-            lst_next = ListNode(nxt)
-            lst.next = lst_next
-            return lst_next
+        # Getting sum of two numbers
+        # Then converting it to string, because string is easy to process
+        # Then reversing it
+        s = str(get_number(l1) + get_number(l2))[::-1]
 
-        def str_to_linked_list(s):
-            if len(s) == 1:
-                return ListNode(int(s[0]))
-            else:
-                return create_linked_list(s[0], str_to_linked_list(s[1:]))
+        # An index for linked list creation
+        i = len(s) - 1
 
-        sum = get_number(l1) + get_number(l2)
-        output_as_a_string = str(sum)[::-1]
-        return str_to_linked_list(output_as_a_string)
-        # TO DO: convert result to LinkedList
+        # Create linked list starting FROM THE LAST NODE TO THE FIRST
+        # The very first statement required for cases where the list have only one element
+        last = ListNode(int(s[i]))
+        previous = last
+
+        while i > 0:
+            # Creating the node before previous (the one created before)
+            current = ListNode(int(s[i-1]))
+            # Link created node with the previous (the one created before)
+            current.next = previous
+            # Now last element is the one just created
+            previous = current
+            # Getting one step back to the list beginning
+            i -= 1
+
+        return previous
 
 
 l11 = ListNode(2)
