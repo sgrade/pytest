@@ -23,6 +23,30 @@ class Solution:
         """
 
         # Time Limit Exceeded
+        # 92 / 94 test cases passed.
+        if len(s) == 0:
+            return 0
+        elif len(s) == 1:
+            return s
+        else:
+
+            results = []
+
+            for i in range(len(s)):
+                for j in range(0, i):
+                    chunk = s[j:i + 1]
+                    if chunk == chunk[::-1]:
+                        results.append(chunk)
+
+            try:
+                output = max(results, key=len)
+            except ValueError:
+                output = s[0]
+
+            return output
+
+
+        # Time Limit Exceeded
         """
         def check_palindrome(string):
             if string[::-1] == string:
@@ -54,10 +78,11 @@ class Solution:
                 i += 1
 
             return longest_pal
-            """
+        """
 
 
 sol = Solution()
+
 
 inp = "babad"
 print(sol.longestPalindrome(inp) == "bab")
@@ -67,3 +92,15 @@ print(sol.longestPalindrome(inp) == "bb")
 
 inp = "bb"
 print(sol.longestPalindrome(inp) == "bb")
+
+inp = "cbabaddababd"
+print(sol.longestPalindrome(inp) == "babaddabab")
+
+inp = "a"
+print(sol.longestPalindrome(inp) == "a")
+
+inp = "abcda"
+print(sol.longestPalindrome(inp) == "a")
+
+inp = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabcaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+print(sol.longestPalindrome(inp))
