@@ -3,7 +3,7 @@ from random import shuffle
 from pathlib import Path
 from os import path
 
-num_of_items = 1000
+num_of_items = 100
 
 lst = list(range(num_of_items))
 shuffle(lst)

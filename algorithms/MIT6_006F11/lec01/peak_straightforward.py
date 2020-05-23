@@ -1,7 +1,17 @@
 import time
-start_time = time.time()
+import json
+from os import path
+from pathlib import Path
 
-lst = [6, 7, 4, 3, 2, 1, 4, 5]
+script_dir = Path().parent.absolute()
+inp_file = path.join(script_dir, 'algorithms', 'input', 'set_of_ints.json')
+with open(inp_file, 'r') as inp_f:
+    inp = json.load(inp_f)
+
+lst = inp['set_of_ints']
+# lst = [6, 7, 4, 3, 2, 1, 4, 5]
+
+start_time = time.time()
 
 peak = None
 
@@ -12,8 +22,9 @@ while(n < len(lst)-1):
     if lst[n] > lst[n-1] and lst[n] > lst[n+1]:
         peak = lst[n]
     n += 1
+    break
 # Checking the last element
-if lst[n] > lst[n-1]:
+if not peak and lst[n] > lst[n-1]:
     peak = lst[n]
 
 print('Peak: ', peak)
