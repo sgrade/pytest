@@ -1,11 +1,11 @@
 import time
 import json
-from os import path
-from pathlib import Path
+from os import path, getcwd
 
-script_dir = Path().parent.absolute()
-inp_file = path.join(script_dir, 'algorithms', 'input', 'set_of_ints.json')
-with open(inp_file, 'r') as inp_f:
+script_dir = getcwd()
+input_dir = "/".join(script_dir.split('/')[:-2])
+input_file = path.join(input_dir, 'input', 'set_of_ints.json')
+with open(input_file, 'r') as inp_f:
     inp = json.load(inp_f)
 
 lst = inp['set_of_ints']
