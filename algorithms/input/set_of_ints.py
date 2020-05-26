@@ -6,7 +6,7 @@ from os import path
 num_of_items = 100
 
 lst = list(range(num_of_items))
-shuffle(lst)
+#shuffle(lst)
 
 set_of_ints = {'set_of_ints': lst}
 
