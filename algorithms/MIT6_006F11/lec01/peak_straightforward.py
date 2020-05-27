@@ -19,7 +19,7 @@ peak = None
 n = 1
 
 while n < len(lst)-1:
-    print('Checking:', lst[n])
+    # print('Checking:', lst[n])
     if lst[n] > lst[n-1] and lst[n] > lst[n+1]:
         peak = lst[n]
         break
