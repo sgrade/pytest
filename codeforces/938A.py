@@ -1,7 +1,6 @@
 # A. Word Correction
-# NOT FINISHED
 
-vowels = ['a', 'e', 'i', 'o', 'u']
+vowels = ['a', 'e', 'i', 'o', 'u', 'y']
 
 n = int(input())
 s = list(input())
@@ -11,12 +10,10 @@ i = 0
 while True:
     try:
         if s[i] in vowels:
-            for j in range(i+1, len(s)):
-                if s[j] in vowels:
-                    del(s[j])
-                    break
+            if s[i+1] in vowels:
+                del(s[i+1])
             else:
-                i = n
+                i += 2
         else:
             i += 1
     except IndexError:
