@@ -1,3 +1,3 @@
 # pytest
 
-Improving Python skills: algorythms, code challenges
+Improving Python skills: algorithms, code challenges
