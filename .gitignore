@@ -104,10 +104,7 @@ venv.bak/
 .mypy_cache/
 
 
-# ###
-.idea
-.vscode
-
+# #
 */input.txt
 */test.*
 */A.py
