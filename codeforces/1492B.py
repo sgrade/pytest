@@ -1,5 +1,4 @@
 # B. Card Deck
-# NOT FINISHED
 
 from collections import OrderedDict
 
@@ -14,19 +13,22 @@ for _ in range(int(input())):
 
     it = iter(mp)
     i, j = n, n
+    current_max = next(it)
     while True:
         try:
-            p = next(it)
             while True:
                 i -= 1
                 mp[p[i]] = True
-                if p[i] == p:
+                if p[i] == current_max:
                     break
             
-            ans.append(p[i:j])
+            ans += p[i:j]
             j = i
 
-            
+            while mp[current_max] != False:
+                current_max = next(it)
 
         except StopIteration:
             break
+
+    print(*ans)
