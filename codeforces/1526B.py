@@ -1,4 +1,4 @@
-# 
+#  B. I Hate 1111
 
 for _ in range(int(input())):
     x = int(input())
