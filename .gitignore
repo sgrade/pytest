@@ -107,6 +107,6 @@ venv.bak/
 # #
 input.txt
 test.*
-A*.py
-B*.py
-C*.py
+A.py
+B.py
+C.py
