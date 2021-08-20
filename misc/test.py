@@ -21,3 +21,13 @@ gen_expr = (x**2 for x in my_list)
 
 for i in range(len(my_list)):
     print(next(gen_expr))
+
+st = set()
+st.add(3)
+st.add(3)
+print(st)
+
+lst = list()
+lst.append(2)
+lst.insert(0, 1)
+print(lst)
