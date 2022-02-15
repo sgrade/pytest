@@ -6,12 +6,12 @@ for _ in range(int(input())):
     w1, h1 = map(int, input().split())
 
     # Solution is based on https://codeforces.com/contest/1555/status/B
-    
+
     ans = 0
-  
+
     if x2 - x1 + w1 > w and y2 - y1 + h1 > h:
         ans = -1
-    
+
     else:
         ans = w + h
         if x2 - x1 + w1 <= w:
