@@ -1,0 +1,19 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Run Python with parameters",
+            "type": "shell",
+            "command": "${command:python.interpreterPath}",
+            "args": ["${file}", "<", "${fileDirname}/input.txt"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
+
+// Run the build task: Cmd + Shift + B
