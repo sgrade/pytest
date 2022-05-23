@@ -11,15 +11,16 @@
             "program": "${file}",
             "console": "integratedTerminal",
             /*
-            // Redirection of input doesn't work
+            // Redirection of input didn't work, but was fixed in VS Code 1.67.2
             // https://github.com/microsoft/vscode-python/issues/13264#issuecomment-1126871014
             // https://github.com/microsoft/debugpy/issues/933
             // https://stackoverflow.com/questions/72244069/input-from-external-file-doesnt-work-with-microsoft-python-vs-code-extension-wh
+            */
             "args": [
                 "<", 
                 "${fileDirname}/input.txt"
             ]
-            */
+            
         }
     ]
 }
