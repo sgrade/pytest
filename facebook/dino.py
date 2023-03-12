@@ -49,7 +49,7 @@ class CheckDinosaurs:
         self._list_of_names_with_bipedal = list()
 
         self._dict_with_parameters_for_speed_calculations = {
-            name: [0, 0] for name in self._list_of_names_with_bipedal
+            name: [0, 0.0] for name in self._list_of_names_with_bipedal
         }
 
         self._bipedal_dict_with_speed = dict()
