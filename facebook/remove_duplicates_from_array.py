@@ -16,3 +16,6 @@ def remove_duplicates(lst):
 
 print(remove_duplicates(l))
 
+
+## An alternative
+print(set(l))

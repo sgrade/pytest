@@ -5,7 +5,7 @@ threshold = 15
 partition = "/"
 
 df = subprocess.Popen(["df", "-h"], stdout = subprocess.PIPE)
-for line in df.stdout:
+for line in df.stdout or []:
     #split into space-separated fields
     splitline = line.decode().split()
     # the % full figure is in field 4,
