@@ -4,12 +4,12 @@
 class UnionFind:
     def __init__(self, size):
         self.parent = [i for i in range(size)]
-        self.rank = [0] * size
-    def find (self, x) -> int:
+        self.rank = [0 for _ in range(size)]
+    def find (self, x):
         if (self.parent[x] != x):
             self.parent[x] = self.find(self.parent[x])
         return self.parent[x]
-    def union_set (self, x, y) -> int:
+    def union_set (self, x, y):
         root_x = self.find(x)
         root_y = self.find(y)
         if root_x == root_y:
@@ -25,13 +25,11 @@ class UnionFind:
 
 class Solution:
     def earliestAcq(self, logs: list[list[int]], n: int) -> int:
-        logs.sort()
+        logs.sort(key = lambda log: log[0])
         dsu = UnionFind(n)
         sets = n
-        for log in logs:
-            if log[1] > log[2]:
-                log[1], log[2] = log[2], log[1]
-            sets -= dsu.union_set(log[1], log[2])
+        for timestamp, x, y in logs:
+            sets -= dsu.union_set(x, y)
             if sets == 1:
-                return log[0]
+                return timestamp
         return -1
