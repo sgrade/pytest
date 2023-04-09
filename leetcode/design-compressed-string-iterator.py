@@ -8,9 +8,10 @@ class StringIterator:
         i = 0
         while i < len(compressedString):
             j = i + 1
+            cnt = 0
             while j < len(compressedString) and compressedString[j].isdigit():
+                cnt = cnt * 10 + int(compressedString[j])
                 j += 1
-            cnt = int(compressedString[i+1:j])
             self.s += compressedString[i] * cnt
             i = j
         self.idx = 0
