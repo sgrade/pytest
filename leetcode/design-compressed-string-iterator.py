@@ -14,17 +14,16 @@ class StringIterator:
         if self.cnt > 0:
             self.cnt -= 1
             return self.s[self.idx]
-        else:
-            if self.next_idx == len(self.s):
-                return ' '
-            self.cnt = 0
-            self.idx = self.next_idx
+        if self.next_idx == len(self.s):
+            return ' '
+        self.cnt = 0
+        self.idx = self.next_idx
+        self.next_idx += 1
+        while self.next_idx < len(self.s) and self.s[self.next_idx].isdigit():
+            self.cnt = self.cnt * 10 + int(self.s[self.next_idx])
             self.next_idx += 1
-            while self.next_idx < len(self.s) and self.s[self.next_idx].isdigit():
-                self.cnt = self.cnt * 10 + int(self.s[self.next_idx])
-                self.next_idx += 1
-            self.cnt -= 1
-            return self.s[self.idx]
+        self.cnt -= 1
+        return self.s[self.idx]
         
     def hasNext(self) -> bool:
         return self.cnt > 0 or self.next_idx < len(self.s)
