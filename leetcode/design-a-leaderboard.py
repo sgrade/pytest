@@ -31,7 +31,7 @@ class Leaderboard:
         cnt = 0
         top_k_sum = 0
         for score in self.top_scores.keys()[::-1]:
-            times = self.top_scores.get(score)
+            times = self.top_scores.get(score, 0)
             for _ in range(times):
                 top_k_sum += score
                 K -= 1
