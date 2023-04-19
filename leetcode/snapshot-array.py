@@ -3,30 +3,25 @@
 
 import bisect
 
+# Memory Limit Exceeded
+# Based on Leetcode's Sample 434 ms submission
 class SnapshotArray:
 
     def __init__(self, length: int):
-        self.snap_ar = [[[0, 0]] for i in range(length)]
+        self.snap_ar = {}
+        self.current = {}
         self.snap_id = 0
 
     def set(self, index: int, val: int) -> None:
-        prev_snap_id = self.snap_ar[index][-1][0]
-        if prev_snap_id == self.snap_id:
-            self.snap_ar[index][-1][1] = val
-        else:
-            self.snap_ar[index].append([self.snap_id, val])
+        self.current[index] = val
 
     def snap(self) -> int:
+        self.snap_ar[self.snap_id] = dict(self.current)
         self.snap_id += 1
         return self.snap_id - 1
 
     def get(self, index: int, snap_id: int) -> int:
-        if not self.snap_ar[index]:
-            return 0
-        idx = bisect.bisect(self.snap_ar[index], snap_id, key=lambda p: p[0])
-        if idx != 0:
-            idx -= 1
-        return self.snap_ar[index][idx][1]
+        return self.snap_ar[snap_id].get(index, 0)
 
 
 # Your SnapshotArray object will be instantiated and called as such:
