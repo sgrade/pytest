@@ -1,40 +1,47 @@
 # 361. Bomb Enemy
 # https://leetcode.com/problems/bomb-enemy/
 
-# Based on Editorial's Approach 2: Dynamic Programming
+# Optimized with Leetcode's Python Sample 615 ms submission
 class Solution:
-    def maxKilledEnemies(self, grid: list[list[str]]) -> int:
+    def maxKilledEnemies(self, grid) -> int:
         if len(grid) == 0:
             return 0
+        
         rows = len(grid)
         cols = len(grid[0])
-
-        row_enemies = 0
-        col_enemies = [0] * cols
-
         ans = 0
 
         for row in range(rows):
-            for col in range(cols):
+            grid[row].append('W')
+        grid.append(['W'] * (cols + 1))
 
-                if col == 0 or grid[row][col - 1] == 'W':
-                    row_enemies = 0
-                    for c in range(col, cols):
-                        if grid[row][c] == 'W':
-                            break
-                        elif grid[row][c] == 'E':
-                            row_enemies += 1
-                
-                if row == 0 or grid[row - 1][col] == 'W':
-                    col_enemies[col] = 0
-                    for r in range(row, rows):
-                        if grid[r][col] == 'W':
-                            break
-                        elif grid[r][col] == 'E':
-                            col_enemies[col] += 1
-                
-                if grid[row][col] == '0':
-                    current_ans = row_enemies + col_enemies[col]
-                    ans = max(ans, current_ans)
+        for row in grid:
+            enemies = 0
+            empty_cells = []
+            for idx in range(cols + 1):
+                if row[idx] == 'E':
+                    enemies += 1
+                elif row[idx] == 'W':
+                    for i in empty_cells:
+                        row[i] = enemies
+                    enemies = 0
+                    empty_cells = []
+                else:
+                    empty_cells.append(idx)
+
+        for col in range(cols):
+            enemies = 0
+            empty_cells = []
+            for row in range(rows + 1):
+                if grid[row][col] == 'E':
+                    enemies += 1
+                elif grid[row][col] == 'W':
+                    for i in empty_cells:
+                        grid[i][col] += enemies
+                        ans = max(ans, grid[i][col])
+                    enemies = 0
+                    empty_cells = []
+                else:
+                    empty_cells.append(row)
         
         return ans
