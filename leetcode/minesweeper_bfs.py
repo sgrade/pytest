@@ -9,6 +9,7 @@ class Solution:
         rows = len(board)
         cols = len(board[0])
            
+        directions = [(r, c) for r in [-1, 0, 1] for c in [-1, 0, 1] if not r == c == 0]
         q = deque()
         q.append(tuple(click))
         while q:
@@ -17,7 +18,6 @@ class Solution:
                 continue
             adjacent_mines = 0
             adjacent_cells = []
-            directions = [(r, c) for r in [-1, 0, 1] for c in [-1, 0, 1] if not r == c == 0]
             for r, c in directions:
                 rr = row + r
                 cc = col + c
