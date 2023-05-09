@@ -19,16 +19,13 @@ class Solution:
             adjacent_cells = []
             directions = [(r, c) for r in [-1, 0, 1] for c in [-1, 0, 1] if not r == c == 0]
             for r, c in directions:
-                if r == 0 and c == 0:
-                    continue
                 rr = row + r
                 cc = col + c
-                if rr < 0 or rr >= rows or cc < 0 or cc >= cols:
-                    continue
-                if board[rr][cc] == 'M':
-                    adjacent_mines += 1
-                else:
-                    adjacent_cells.append([rr, cc])
+                if 0 <= rr < rows and 0 <= cc < cols:
+                    if board[rr][cc] == 'M':
+                        adjacent_mines += 1
+                    else:
+                        adjacent_cells.append((rr, cc))
             if adjacent_mines != 0:
                 board[row][col] = str(adjacent_mines)
             else:
