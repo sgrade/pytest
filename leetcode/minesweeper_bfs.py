@@ -26,9 +26,10 @@ class Solution:
                         adjacent_mines += 1
                     else:
                         adjacent_cells.append((rr, cc))
-            if adjacent_mines != 0:
-                board[row][col] = str(adjacent_mines)
-            else:
+            if adjacent_mines == 0:
                 board[row][col] = 'B'
                 q.extend(adjacent_cells)
+            else:
+                board[row][col] = str(adjacent_mines)
+                
         return board
