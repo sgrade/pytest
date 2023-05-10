@@ -1,8 +1,10 @@
 # 529. Minesweeper
 # https://leetcode.com/problems/minesweeper/
 
+from collections import deque
+
 class Solution:
-    def updateBoard(self, board: List[List[str]], click: List[int]) -> List[List[str]]:
+    def updateBoard(self, board: list[list[str]], click: list[int]) -> list[list[str]]:
         if board[click[0]][click[1]] == 'M':
             board[click[0]][click[1]] = 'X'
             return board
