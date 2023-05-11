@@ -3,15 +3,12 @@
 
 class Solution:
     def findContentChildren(self, g: List[int], s: List[int]) -> int:
-        s.sort()
-        g.sort()
-        s_idx, g_idx = 0, 0
-        ans = 0
-        while s_idx < len(s) and g_idx < len(g):
-            if s[s_idx] < g[g_idx]:
-                s_idx += 1
-                continue
-            s_idx += 1
-            g_idx += 1
-            ans += 1
+        s = sorted(s)
+        g = sorted(g)
+        s_idx, g_idx, ans = len(s) - 1, len(g) - 1, 0
+        while s_idx >= 0 and g_idx >= 0:
+            if s[s_idx] >= g[g_idx]:
+                s_idx -= 1
+                ans += 1
+            g_idx -= 1
         return ans
