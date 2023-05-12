@@ -2,7 +2,7 @@
 # https://leetcode.com/problems/assign-cookies/
 
 class Solution:
-    def findContentChildren(self, g: List[int], s: List[int]) -> int:
+    def findContentChildren(self, g: list[int], s: list[int]) -> int:
         s = sorted(s)
         g = sorted(g)
         s_idx, g_idx, ans = len(s) - 1, len(g) - 1, 0
