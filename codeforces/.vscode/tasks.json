@@ -6,8 +6,8 @@
         {
             "label": "Run Python with parameters",
             "type": "shell",
-            "command": "${command:python.interpreterPath}",
-            "args": ["${file}", "<", "${fileDirname}/input.txt"],
+            "command": "uv",
+            "args": ["run", "python", "${file}", "<", "${fileDirname}/input.txt"],
             "group": {
                 "kind": "build",
                 "isDefault": true

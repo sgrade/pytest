@@ -7,7 +7,7 @@
         {
             "name": "Python: Current File",
             "cwd": "${fileDirname}",
-            "type": "python",
+            "type": "debugpy",
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal",
@@ -18,10 +18,9 @@
             // https://stackoverflow.com/questions/72244069/input-from-external-file-doesnt-work-with-microsoft-python-vs-code-extension-wh
             */
             "args": [
-                "<", 
+                "<",
                 "${fileDirname}/input.txt"
             ]
-            
         }
     ]
 }

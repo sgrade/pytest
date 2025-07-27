@@ -1,0 +1,25 @@
+[project]
+name = "codeforces-solutions"
+version = "0.1.0"
+requires-python = ">=3.8"
+dependencies = [
+    "numpy>=1.21.0",
+    "sympy>=1.10.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "black>=22.0.0",
+    "mypy>=0.990",
+    "ruff>=0.1.0",
+]
+
+[tool.uv]
+dev-dependencies = [
+    "ipython>=8.0.0",
+]
+
+# Empty packages to avoid build issues
+[tool.hatch.build.targets.wheel]
+packages = []

@@ -1,0 +1,32 @@
+{
+    "folders": [
+        {
+            "name": "kaggle",
+            "path": "./kaggle"
+        },
+        {
+            "name": "leetcode",
+            "path": "./leetcode"
+        },
+        {
+            "name": "codeforces",
+            "path": "./codeforces"
+        },
+        {
+            "name": "root",
+            "path": "."
+        }
+    ],
+    "settings": {
+        "python.defaultInterpreterPath": "uv run python",
+        "python.terminal.activateEnvironment": true,
+        "python.terminal.activateEnvInCurrentTerminal": true
+    },
+    "extensions": {
+        "recommendations": [
+            "ms-python.python",
+            "ms-python.black-formatter",
+            "ms-python.mypy-type-checker"
+        ]
+    }
+}
