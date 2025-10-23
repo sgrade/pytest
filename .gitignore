@@ -113,3 +113,6 @@ C.py
 
 # uv lock files (not needed for personal practice scripts)
 uv.lock
+
+temp.*
+temp/
