@@ -1,7 +1,7 @@
 # 3387. Maximize Amount After Two Days of Conversions
 # https://leetcode.com/problems/maximize-amount-after-two-days-of-conversions/
 
-from typing import List
+from typing import List, Any, Tuple
 from collections import defaultdict, deque
 
 
@@ -24,15 +24,15 @@ class Solution:
         return ans
     
     def build_graph(self, pairs, rates):
-        graph = defaultdict(list)
-        for (cur1, cur2), rate in zip(pairs, rates):
+        graph = defaultdict[Any, List](list)
+        for (cur1, cur2), rate in zip[Tuple](pairs, rates):
             graph[cur1].append((cur2, rate))
             graph[cur2].append((cur1, 1 / rate))
         return graph
     
     def bfs(self, graph, start_currency, start_amount):
         max_amount = {start_currency: start_amount}
-        queue = deque([(start_currency, start_amount)])
+        queue = deque[Tuple]([(start_currency, start_amount)])
         
         while queue:
             current_currency, current_amount = queue.popleft()
