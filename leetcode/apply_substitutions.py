@@ -7,7 +7,7 @@ from functools import lru_cache
 
 class Solution:
     def applySubstitutions(self, replacements: List[List[str]], text: str) -> str:
-        mp = dict(replacements)
+        mp = dict[str, str](replacements)
         
         @lru_cache(maxsize=None)
         def replace(text):
