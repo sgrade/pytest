@@ -5,6 +5,18 @@
     "version": "0.2.0",
     "configurations": [   
         {
+            "name": "Debug Codeforces Problem",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}/codeforces",
+            "args": [
+                "<", 
+                "${workspaceFolder}/codeforces/input.txt"
+            ]
+        },
+        {
             "name": "Debug LeetCode Problem",
             "type": "debugpy",
             "request": "launch",
