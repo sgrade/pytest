@@ -1,0 +1,49 @@
+[project]
+name = "pytest"
+version = "0.1.0"
+description = "A workspace for Python coding challenges and projects."
+authors = [{ name = "SGrade" }]
+requires-python = ">=3.13"
+
+[project.optional-dependencies]
+dev = [
+    "ruff",
+]
+
+[tool.uv]
+link-mode = "copy"
+
+# This tells setuptools "this isn't a real package, don't try to discover anything."
+[tool.hatch.build.targets.wheel]
+packages = []
+
+[tool.ruff]
+line-length = 88
+select = ["E", "F", "I"]
+
+[tool.ruff.lint]
+# A permissive set of rules for competitive programming.
+# - F (Pyflakes): Catches errors like undefined names and unused imports.
+# - I (isort): Sorts imports automatically.
+select = ["F", "I"]
+
+# Ignore warnings about unused local variables, which are common during
+# debugging in competitive programming.
+ignore = ["F841"]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]
+"tests/*" = ["S101"]
+
+[tool.ruff.format]
+# Use double quotes for strings.
+quote-style = "double"
+
+# Indent with spaces, rather than tabs.
+indent-style = "space"
+
+# Respect magic trailing commas.
+skip-magic-trailing-comma = false
+
+# Automatically detect the appropriate line ending.
+line-ending = "auto"

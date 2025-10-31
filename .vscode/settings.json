@@ -1,7 +1,18 @@
 {
-    "python.analysis.typeCheckingMode": "basic",
-    "python.defaultInterpreterPath": "uv run python",
+    // Python settings
     "python.terminal.activateEnvironment": true,
     "python.terminal.activateEnvInCurrentTerminal": true,
-    "python.envFile": "${workspaceFolder}/.env"
+
+    // Force use of the native Ruff server (not legacy ruff-lsp)
+    "ruff.nativeServer": true,
+
+    // Ruff is the primary Python linter and formatter
+    "[python]": {
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.fixAll.ruff": "explicit",
+            "source.organizeImports.ruff": "explicit"
+        }
+    }
 }

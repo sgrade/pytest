@@ -15,9 +15,8 @@ dev = [
     "ruff>=0.1.0",
 ]
 
-[tool.uv]
-dev-dependencies = [
-    "jupyter>=1.0.0",
+[dependency-groups]
+dev = [
     "ipython>=8.0.0",
 ]
 

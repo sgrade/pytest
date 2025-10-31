@@ -1,20 +1,48 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/python
 {
-	"name": "Python 3",
-	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	// "image": "mcr.microsoft.com/devcontainers/python:0-3.11"
-	"image": "mcr.microsoft.com/devcontainers/python:3.13",
+	"name": "Pytest",
+    "build": {
+        "dockerfile": "./Dockerfile",
+        "context": "."
+    },
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
-	// "features": {},
+    "features": {
+        "ghcr.io/devcontainers/features/common-utils:2": {
+            // Docker Desktop for Windows: Inside the container, mounted files appear as owned by root
+            // We don't use non-root user to avoid git ownership issues
+            "upgradePackages": "true"
+        },
+        "ghcr.io/devcontainers/features/python:1": "none", // Using uv for Python environment management
+        "ghcr.io/devcontainers/features/git:1": {
+            "version": "latest",
+            "ppa": "false"
+        }
+    },
+
+	// Configure tool-specific properties.
+	"customizations": {
+        "vscode": {
+            "extensions": [
+				"ms-azuretools.vscode-docker",
+                "ms-python.python",
+                "charliermarsh.ruff", // For Python linting and formatting
+                "ms-toolsai.jupyter"
+            ],
+            "settings": {
+                // Python interpreter path for debugger
+                "python.defaultInterpreterPath": "${containerWorkspaceFolder}/.venv/bin/python"
+            }
+		}
+	},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
 	// "postCreateCommand": "pip3 install --user -r requirements.txt",
-	"postCreateCommand": "bash -i .devcontainer/scripts/install-dependencies.sh"
+	"postCreateCommand": "uv sync --all-extras --dev"
 
 	// Configure tool-specific properties.
 	// "customizations": {},
