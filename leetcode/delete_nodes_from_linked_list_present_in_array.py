@@ -16,13 +16,11 @@ class Solution:
         self, nums: List[int], head: Optional[ListNode]
     ) -> Optional[ListNode]:
         st = set(nums)
-        prev = ListNode(next=head)
-        pre_head = prev
-        cur = head
-        while cur:
-            if cur.val in st:
-                prev.next = cur.next
+        pre_head = ListNode(next=head)
+        prev = pre_head
+        while prev.next:
+            if prev.next.val in st:
+                prev.next = prev.next.next
             else:
-                prev = cur
-            cur = cur.next
+                prev = prev.next
         return pre_head.next
