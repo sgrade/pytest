@@ -5,15 +5,15 @@
     "version": "0.2.0",
     "configurations": [   
         {
-            "name": "Debug Codeforces Problem",
+            "name": "Debug Competitive Programming",
             "type": "debugpy",
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal",
-            "cwd": "${workspaceFolder}/codeforces",
+            "cwd": "${fileDirname}",
             "args": [
                 "<", 
-                "${workspaceFolder}/codeforces/input.txt"
+                "${fileDirname}/input.txt"
             ]
         },
         {
