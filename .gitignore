@@ -116,3 +116,6 @@ uv.lock
 
 temp.*
 temp/
+
+# Roadmaps (personal learning plans)
+**/ROADMAP*.md
