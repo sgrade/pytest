@@ -1,9 +1,9 @@
 def subsets(nums):
     """Generate all subsets (power set)."""
-    res = []
+    ans = []
 
     def backtrack(start, path):
-        res.append(path[:])
+        ans.append(path[:])
 
         for i in range(start, len(nums)):
             path.append(nums[i])
@@ -11,16 +11,16 @@ def subsets(nums):
             path.pop()
 
     backtrack(0, [])
-    return res
+    return ans
 
 
 def permutations(nums):
     """Generate all permutations."""
-    res = []
+    ans = []
 
     def backtrack(path, used):
         if len(path) == len(nums):
-            res.append(path[:])
+            ans.append(path[:])
             return
 
         for i, num in enumerate(nums):
@@ -32,16 +32,16 @@ def permutations(nums):
                 path.pop()
 
     backtrack([], [False] * len(nums))
-    return res
+    return ans
 
 
 def combination_sum(candidates, target):
     """Generate combinations that sum to target (candidates can be reused)."""
-    res = []
+    ans = []
 
     def backtrack(remaining, start, path):
         if remaining == 0:
-            res.append(path[:])
+            ans.append(path[:])
             return
         if remaining < 0:
             return
@@ -52,4 +52,4 @@ def combination_sum(candidates, target):
             path.pop()
 
     backtrack(target, 0, [])
-    return res
+    return ans

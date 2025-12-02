@@ -38,20 +38,20 @@ def prefix_sum_2d(matrix):
     2D Prefix Sum Template
 
     Use when: Need to quickly compute sum of any submatrix
-    Time: O(m*n) to build, O(1) per query
-    Space: O(m*n)
+    Time: O(rows*cols) to build, O(1) per query
+    Space: O(rows*cols)
 
     prefix[i][j] = sum of all elements in rectangle from (0,0) to (i-1,j-1)
     """
     if not matrix or not matrix[0]:
         return [[]]
 
-    m, n = len(matrix), len(matrix[0])
+    rows, cols = len(matrix), len(matrix[0])
     # Extra row and column to avoid index out of bounds
-    prefix = [[0] * (n + 1) for _ in range(m + 1)]
+    prefix = [[0] * (cols + 1) for _ in range(rows + 1)]
 
-    for i in range(1, m + 1):
-        for j in range(1, n + 1):
+    for i in range(1, rows + 1):
+        for j in range(1, cols + 1):
             prefix[i][j] = (
                 matrix[i - 1][j - 1]
                 + prefix[i - 1][j]
@@ -109,11 +109,11 @@ class PrefixSum2D:
             self.prefix = [[]]
             return
 
-        m, n = len(matrix), len(matrix[0])
-        self.prefix = [[0] * (n + 1) for _ in range(m + 1)]
+        rows, cols = len(matrix), len(matrix[0])
+        self.prefix = [[0] * (cols + 1) for _ in range(rows + 1)]
 
-        for i in range(1, m + 1):
-            for j in range(1, n + 1):
+        for i in range(1, rows + 1):
+            for j in range(1, cols + 1):
                 self.prefix[i][j] = (
                     matrix[i - 1][j - 1]
                     + self.prefix[i - 1][j]
