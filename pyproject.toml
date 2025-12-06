@@ -9,6 +9,7 @@ requires-python = ">=3.13"
 dev = [
     "ruff",
     "pytest",
+    "sortedcontainers",
 ]
 
 [tool.uv]
