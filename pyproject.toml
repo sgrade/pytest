@@ -11,6 +11,7 @@ dev = [
     "pytest",
     "sortedcontainers",
     "types-PyYAML",
+    "fastapi[standard]",
 ]
 
 [tool.uv]
