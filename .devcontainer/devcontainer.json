@@ -26,7 +26,7 @@
         "vscode": {
             "extensions": [
 				"ms-azuretools.vscode-docker",
-                "ms-python.python",
+                // "ms-python.python",
                 "charliermarsh.ruff", // For Python linting and formatting
                 "ms-toolsai.jupyter",
                 "DivyanshuAgrawal.competitive-programming-helper"
