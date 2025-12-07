@@ -2,8 +2,8 @@
 # import mysql.connector
 # import pandas as pd
 
-from datetime import datetime
 import json
+from datetime import datetime
 
 """
 Example input (entire string):
@@ -28,24 +28,26 @@ Example input (entire string):
 
 """
 
+
 def save_addresses(addresses_str: str):
     """
     Save structured addresses to "/opt/addresses/<millisecond timestamp>.json"
     """
 
-    try:    
-        output = [] # list of dicts
-        
-        input_list = addresses_str.split(sep='\n') # list of lines
-        
+    try:
+        output = []  # list of dicts
+
+        input_list = addresses_str.split(sep="\n")  # list of lines
+
         for line in input_list:
-            
-            line_splitted = line.split(sep=', ')    # ["123 Gamble Street", "Dallas", "TX 75083"]
-            
-            first_space_idx = line_splitted[0].find(' ')
+            line_splitted = line.split(
+                sep=", "
+            )  # ["123 Gamble Street", "Dallas", "TX 75083"]
+
+            first_space_idx = line_splitted[0].find(" ")
             street_number = line_splitted[0][:first_space_idx]
-            street_name = line_splitted[0][first_space_idx + 1:]
-            
+            street_name = line_splitted[0][first_space_idx + 1 :]
+
             ext = line_splitted[1] if len(line_splitted) == 4 else ""
 
             city = line_splitted[-2]
@@ -61,18 +63,18 @@ def save_addresses(addresses_str: str):
             line_dict["zip"] = postcode
 
             output.append(line_dict)
-        
+
         output_json = json.dumps(output)
         print(output_json)
 
         dt = datetime.now()
         # getting the timestamp
         ts = datetime.timestamp(dt)
-        
+
         dest_filename = str(ts) + ".json"
         print(dest_filename)
-        
-        with open (dest_filename, 'w') as f:
+
+        with open(dest_filename, "w") as f:
             json.dump(output_json, f)
 
     except:

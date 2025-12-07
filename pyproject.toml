@@ -10,6 +10,7 @@ dev = [
     "ruff",
     "pytest",
     "sortedcontainers",
+    "types-PyYAML",
 ]
 
 [tool.uv]

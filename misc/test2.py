@@ -3,7 +3,7 @@
 
 # python2/3 support
 try:
-    from itertools import izip_longest as zip_longest
+    from itertools import zip_longest
 except ImportError:
     from itertools import zip_longest
 
@@ -32,19 +32,18 @@ def dict_diff(prv, nxt):
                     result[k] = diff
             else:
                 "If only one is a dict they are clearly different"
-                result[k] = {'result': prv.get(k), 'expected': nxt.get(k)}
+                result[k] = {"result": prv.get(k), "expected": nxt.get(k)}
         else:
-            "Ellipsis is a wildcard."""
+            "Ellipsis is a wildcard."
             if prv.get(k) != nxt.get(k) and nxt.get(k) != "...":
-                result[k] = {'result': prv.get(k), 'expected': nxt.get(k)}
+                result[k] = {"result": prv.get(k), "expected": nxt.get(k)}
     return result
 
 
-prv = {'routers': 'bgp', 'switches': 'ex'}
-nxt = {'routers': 'bgp', 'switches': 'qfx', 'firewalls': 'palo-alto'}
+prv = {"routers": "bgp", "switches": "ex"}
+nxt = {"routers": "bgp", "switches": "qfx", "firewalls": "palo-alto"}
 
 print(dict_diff(prv, nxt))
 
 #
 # list_dicts_diff(prv, nxt)
-

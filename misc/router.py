@@ -20,7 +20,7 @@ class Router:
             "dst2": ["int2"],
         }
         self.interface_in_lb: int = 8
-        self.dest_counters: dict[str, int] = {{"dst1", 0}, {"dst2", 0}}
+        self.dest_counters: dict[str, int] = {"dst1": 0, "dst2": 0}
 
     def forward(self, packet: dict) -> str:
         """Forward based on destination."""
@@ -28,14 +28,13 @@ class Router:
         if not dst:
             raise ValueError(f"There is no such destination: {dst}")
 
-        dest_interface_list: str = self.routing_table.get(dst, None)
-        # TODO: validation
-        dest_counter: int = self.dest_counters.get(dst)
-
-        dest_interface: str = self.routing_table.get(dst, None)[dest_counter]
-        if not dest_interface:
+        dest_interface_list: list[str] | None = self.routing_table.get(dst, None)
+        if not dest_interface_list:
             # TODO: implement unknown dest lookup
             raise Exception("There is no such destination")
+
+        dest_counter: int = self.dest_counters.get(dst, 0)
+        dest_interface: str = dest_interface_list[dest_counter]
 
         # Check if the interface is healthy
         # Make decision based on the health
