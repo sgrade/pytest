@@ -5,7 +5,8 @@
 # Based on Editorial's Approach: Playback After Sorting
 class Solution:
     def countMentions(self, numberOfUsers: int, events: list[list[str]]) -> list[int]:
-        events.sort(key=lambda e: (int(e[1]), e[0] == "MESSAGE"))
+        cmp = lambda e: (int(e[1]), e[0] == "MESSAGE")
+        events.sort(key=cmp)
 
         counter = [0] * numberOfUsers
         next_online = [0] * numberOfUsers
