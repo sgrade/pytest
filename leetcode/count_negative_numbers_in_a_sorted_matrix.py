@@ -5,7 +5,7 @@
 class Solution:
     def countNegatives(self, grid: list[list[int]]) -> int:
         negatives = 0
-        rows, cols, max_col = len(grid), len(grid[0]), len(grid[0])
+        cols, max_col = len(grid[0]), len(grid[0])
         for row in grid:
             for col in range(max_col):
                 if row[col] < 0:
