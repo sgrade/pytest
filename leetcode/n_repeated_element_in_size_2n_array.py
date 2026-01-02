@@ -2,10 +2,11 @@
 # https://leetcode.com/problems/n-repeated-element-in-size-2n-array/
 
 
+# Based on Editorial's Approach 2: Compare
 class Solution:
     def repeatedNTimes(self, nums: list[int]) -> int:
-        nums.sort()
-        for i in range(1, len(nums)):
-            if nums[i - 1] == nums[i]:
-                return nums[i]
+        for diff in range(1, 4):
+            for i in range(len(nums) - diff):
+                if nums[i] == nums[i + diff]:
+                    return nums[i]
         return -1
