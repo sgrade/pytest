@@ -9,16 +9,16 @@ class Solution:
         SENTINEL = -(10**18)
         memo = [[SENTINEL] * n2 for _ in range(n1)]
 
-        def get_product(idx1, idx2):
+        def get_dot_product(idx1, idx2):
             if idx1 == n1 or idx2 == n2:
                 return 0
             if memo[idx1][idx2] != SENTINEL:
                 return memo[idx1][idx2]
 
             take_both = nums1[idx1] * nums2[idx2]
-            move_both = take_both + get_product(idx1 + 1, idx2 + 1)
-            move_idx1 = get_product(idx1 + 1, idx2)
-            move_idx2 = get_product(idx1, idx2 + 1)
+            move_both = take_both + get_dot_product(idx1 + 1, idx2 + 1)
+            move_idx1 = get_dot_product(idx1 + 1, idx2)
+            move_idx2 = get_dot_product(idx1, idx2 + 1)
             memo[idx1][idx2] = max(move_both, move_idx1, move_idx2)
             return memo[idx1][idx2]
 
@@ -29,4 +29,4 @@ class Solution:
         if mx2 < 0 and mn1 > 0:
             return mx2 * mn1
 
-        return get_product(0, 0)
+        return get_dot_product(0, 0)
