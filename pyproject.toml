@@ -22,25 +22,38 @@ link-mode = "copy"
 packages = []
 
 [tool.ruff]
-line-length = 88
-select = ["E", "F", "I"]
+# Google Python Style Guide recommends 80 characters
+line-length = 80
+# Enable preview mode for additional formatting rules (like E302 blank lines)
+preview = true
 
 [tool.ruff.lint]
-# A permissive set of rules for competitive programming.
-# - F (Pyflakes): Catches errors like undefined names and unused imports.
-# - I (isort): Sorts imports automatically.
-select = ["F", "I"]
-
-# Ignore warnings about unused local variables, which are common during
-# debugging in competitive programming.
-ignore = ["F841"]
+# Rules aligned with Google Python Style Guide.
+# - E (pycodestyle errors): Code style violations including blank lines
+# - F (Pyflakes): Catches errors like undefined names and unused imports
+# - I (isort): Sorts imports automatically
+# - N (pep8-naming): Naming conventions
+# - UP (pyupgrade): Modern Python idioms
+# - B (flake8-bugbear): Common bugs
+select = ["E", "F", "I", "N", "UP", "B"]
 
 [tool.ruff.lint.per-file-ignores]
 "__init__.py" = ["F401"]
 "tests/*" = ["S101"]
+# LeetCode uses camelCase method names in problem statements
+"leetcode/*" = [
+    "N802",  # Function name should be lowercase (LeetCode uses camelCase)
+]
+# Relaxed rules for Codeforces competitive programming
+"codeforces/*" = [
+    "F841",  # Unused local variable (common during debugging)
+    "N802",  # Function name should be lowercase (allow camelCase)
+    "N806",  # Allow UPPERCASE variables in functions (N, M, etc.)
+]
 
 [tool.ruff.format]
-# Use double quotes for strings.
+# Google Python Style Guide is flexible on quotes, but prefers consistency.
+# Using double quotes for consistency with string literals in docstrings.
 quote-style = "double"
 
 # Indent with spaces, rather than tabs.

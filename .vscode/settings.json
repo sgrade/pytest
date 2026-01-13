@@ -6,13 +6,18 @@
     // Force use of the native Ruff server (not legacy ruff-lsp)
     "ruff.nativeServer": true,
 
+    // Enable auto-import suggestions (if Pylance/Python extension is available)
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.importFormat": "absolute",
+
     // Ruff is the primary Python linter and formatter
     "[python]": {
         "editor.defaultFormatter": "charliermarsh.ruff",
         "editor.formatOnSave": true,
         "editor.codeActionsOnSave": {
             "source.fixAll.ruff": "explicit",
-            "source.organizeImports.ruff": "explicit"
+            "source.organizeImports.ruff": "explicit",
+            "source.addMissingImports": "explicit"
         }
     }
 }
