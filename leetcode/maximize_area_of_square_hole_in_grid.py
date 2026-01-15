@@ -9,19 +9,19 @@ class Solution:
         hBars.sort()
         vBars.sort()
 
-        h_max, h_cur, v_max, v_cur = 1, 1, 1, 1
-        for i in range(1, len(hBars)):
-            if hBars[i] == hBars[i - 1] + 1:
-                h_cur += 1
-            else:
-                h_cur = 1
-            h_max = max(h_max, h_cur)
-        for i in range(1, len(vBars)):
-            if vBars[i] == vBars[i - 1] + 1:
-                v_cur += 1
-            else:
-                v_cur = 1
-            v_max = max(v_max, v_cur)
+        def get_longest_consequitive(bars: list[int]) -> int:
+            longest = 1
+            current = 1
+            for i in range(1, len(bars)):
+                if bars[i] == bars[i - 1] + 1:
+                    current += 1
+                else:
+                    current = 1
+                longest = max(longest, current)
+            return longest
+
+        h_max = get_longest_consequitive(hBars)
+        v_max = get_longest_consequitive(vBars)
 
         side = min(h_max, v_max) + 1
         return side * side
