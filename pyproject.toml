@@ -43,6 +43,7 @@ select = ["E", "F", "I", "N", "UP", "B"]
 # LeetCode uses camelCase method names in problem statements
 "leetcode/*" = [
     "N802",  # Function name should be lowercase (LeetCode uses camelCase)
+    "N803",  # Argument name should be lowercase (LeetCode uses camelCase)
 ]
 # Relaxed rules for Codeforces competitive programming
 "codeforces/*" = [
