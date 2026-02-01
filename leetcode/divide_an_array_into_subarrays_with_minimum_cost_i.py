@@ -9,6 +9,6 @@ class Solution:
         for i in range(3, len(nums)):
             if nums[i] < mins[1]:
                 mins[1] = nums[i]
-            mins.sort()
+                mins.sort()
         cost = nums[0] + mins[0] + mins[1]
         return cost
