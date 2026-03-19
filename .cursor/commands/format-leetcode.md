@@ -7,3 +7,6 @@ Review the code and apply the [Google Python Style Guide](https://google.github.
 - Short variable names (ans, res, curr, prev, etc.) are ACCEPTABLE when their meaning is clear from context.
 - Line length follows Google's 80-character recommendation (configured in pyproject.toml).
 - LeetCode method names use camelCase (as specified by LeetCode), but helper functions and variables should use snake_case.
+
+Add minimalistic comments explaining how it works.
+Keep comment with the reference to the Editoria'l solution if exists
