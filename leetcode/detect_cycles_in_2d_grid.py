@@ -2,6 +2,7 @@
 # https://leetcode.com/problems/detect-cycles-in-2d-grid/
 
 
+# Based on Editorial's Approach: Union-Find
 class UnionFind:
     def __init__(self, n):
         self.parent = list(range(n))
@@ -33,14 +34,14 @@ class UnionFind:
 
 class Solution:
     def containsCycle(self, grid: list[list[str]]) -> bool:
-        m, n = len(grid), len(grid[0])
-        uf = UnionFind(m * n)
-        for i in range(m):
-            for j in range(n):
+        rows, cols = len(grid), len(grid[0])
+        uf = UnionFind(rows * cols)
+        for i in range(rows):
+            for j in range(cols):
                 if i > 0 and grid[i][j] == grid[i - 1][j]:
-                    if not uf.union(i * n + j, (i - 1) * n + j):
+                    if not uf.union(i * cols + j, (i - 1) * cols + j):
                         return True
                 if j > 0 and grid[i][j] == grid[i][j - 1]:
-                    if not uf.union(i * n + j, i * n + j - 1):
+                    if not uf.union(i * cols + j, i * cols + j - 1):
                         return True
         return False
