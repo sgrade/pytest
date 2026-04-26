@@ -10,18 +10,18 @@ class UnionFind:
         return self.parent[x]
 
     def union(self, x, y):
-        rootX = self.find(x)
-        rootY = self.find(y)
+        root_x = self.find(x)
+        root_y = self.find(y)
 
-        if rootX != rootY:
+        if root_x != root_y:
             # Union by rank
-            if self.rank[rootX] > self.rank[rootY]:
-                self.parent[rootY] = rootX
-            elif self.rank[rootX] < self.rank[rootY]:
-                self.parent[rootX] = rootY
+            if self.rank[root_x] > self.rank[root_y]:
+                self.parent[root_y] = root_x
+            elif self.rank[root_x] < self.rank[root_y]:
+                self.parent[root_x] = root_y
             else:
-                self.parent[rootY] = rootX
-                self.rank[rootX] += 1
+                self.parent[root_y] = root_x
+                self.rank[root_x] += 1
             self.count -= 1
             return True
         return False
