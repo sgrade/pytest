@@ -4,18 +4,18 @@
 
 class Solution:
     def numberOfSpecialChars(self, word: str) -> int:
-        first_upper_idx: dict = {}
-        last_lower_idx: dict = {}
+        # first index where the uppercase form appears
+        first_upper: dict[str, int] = {}
+        # last index where the lowercase form appears
+        last_lower: dict[str, int] = {}
         for i, ch in enumerate(word):
             if ch.isupper():
-                ch = ch.lower()
-                if ch not in first_upper_idx:
-                    first_upper_idx[ch] = i
-        for i, ch in enumerate(word):
-            if ch.islower():
-                last_lower_idx[ch] = i
-        ans = 0
-        for ch, upper_idx in first_upper_idx.items():
-            if ch in last_lower_idx and last_lower_idx[ch] < upper_idx:
-                ans += 1
-        return ans
+                first_upper.setdefault(ch.lower(), i)
+            else:
+                last_lower[ch] = i
+
+        # special: lowercase ends before uppercase begins
+        return sum(
+            last_lower.get(ch, first_upper[ch]) < idx
+            for ch, idx in first_upper.items()
+        )
