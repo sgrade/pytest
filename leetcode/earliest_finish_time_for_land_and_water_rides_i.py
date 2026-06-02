@@ -10,19 +10,20 @@ class Solution:
         waterStartTime: list[int],
         waterDuration: list[int],
     ) -> int:
-        def get_earliest(start1, duration1, start2, duration2):
-            end1 = 10000
-            for s1, d1 in zip(start1, duration1, strict=True):
-                end1 = min(end1, s1 + d1)
-            end2 = 10000
-            for s2, d2 in zip(start2, duration2, strict=True):
-                end2 = min(end2, max(end1, s2) + d2)
-            return end2
+        def earliest(start1, dur1, start2, dur2):
+            # Finish the first ride as early as possible, then start the
+            # second no sooner than that and minimize its finish time.
+            end1 = min(s + d for s, d in zip(start1, dur1, strict=True))
+            return min(
+                max(end1, s) + d
+                for s, d in zip(start2, dur2, strict=True)
+            )
 
-        land = get_earliest(
+        # The faster overall order is either land first or water first.
+        land_first = earliest(
             landStartTime, landDuration, waterStartTime, waterDuration
         )
-        water = get_earliest(
+        water_first = earliest(
             waterStartTime, waterDuration, landStartTime, landDuration
         )
-        return min(land, water)
+        return min(land_first, water_first)
