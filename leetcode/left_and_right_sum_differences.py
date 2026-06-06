@@ -4,14 +4,12 @@
 
 class Solution:
     def leftRightDifference(self, nums: list[int]) -> list[int]:
-        n = len(nums)
-        ans = [0] * n
+        total = sum(nums)
+        ans = []
         left_sum = 0
-        for i in range(1, n):
-            left_sum += nums[i - 1]
-            ans[i] = left_sum
-        right_sum = 0
-        for i in range(n - 2, -1, -1):
-            right_sum += nums[i + 1]
-            ans[i] = abs(ans[i] - right_sum)
+        for x in nums:
+            # Sum to the right is everything except the left part and x itself.
+            right_sum = total - left_sum - x
+            ans.append(abs(left_sum - right_sum))
+            left_sum += x
         return ans
