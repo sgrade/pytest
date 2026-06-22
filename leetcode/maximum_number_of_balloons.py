@@ -1,21 +1,14 @@
 # 1189. Maximum Number of Balloons
 # https://leetcode.com/problems/maximum-number-of-balloons/
 
+from collections import Counter
+
 
 class Solution:
     def maxNumberOfBalloons(self, text: str) -> int:
-        have: list = [0] * 26
-        for c in text:
-            have[ord(c) - 97] += 1
-
-        target = "balloon"
-        need: list = [0] * 26
-        for c in target:
-            need[ord(c) - 97] += 1
-
-        ans = len(text) // len(target)
-        for i, cnt in enumerate(need):
-            if cnt == 0:
-                continue
-            ans = min(ans, have[i] // cnt)
-        return ans
+        # Count letters in text and in the word "balloon".
+        have = Counter(text)
+        need = Counter("balloon")
+        # Each balloon needs `cnt` copies of letter `c`; the limiting
+        # letter determines how many full words we can build.
+        return min(have[c] // cnt for c, cnt in need.items())
