@@ -12,21 +12,21 @@ class Solution:
             graph[prerequisite].append(course)
 
         visited = [False] * numCourses
-        in_stack = [False] * numCourses
+        on_path = [False] * numCourses
 
         def has_cycle(course: int) -> bool:
-            if in_stack[course]:
+            if on_path[course]:
                 return True
             if visited[course]:
                 return False
             visited[course] = True
-            in_stack[course] = True
+            on_path[course] = True
 
             # A course already on this path creates a circular dependency.
             for next_course in graph[course]:
                 if has_cycle(next_course):
                     return True
-            in_stack[course] = False
+            on_path[course] = False
             return False
 
         for course in range(numCourses):
