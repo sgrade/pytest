@@ -119,3 +119,5 @@ temp/
 
 # Roadmaps (personal learning plans)
 **/ROADMAP*.md
+
+devcontainer-lock.json
