@@ -7,9 +7,9 @@ class Solution:
     def canFinish(
         self, numCourses: int, prerequisites: list[list[int]]
     ) -> bool:
-        graph = [[] for _ in range(numCourses)]
+        adj = [[] for _ in range(numCourses)]
         for course, prerequisite in prerequisites:
-            graph[prerequisite].append(course)
+            adj[prerequisite].append(course)
 
         visited = [False] * numCourses
         on_path = [False] * numCourses
@@ -23,7 +23,7 @@ class Solution:
             on_path[course] = True
 
             # A course already on this path creates a circular dependency.
-            for next_course in graph[course]:
+            for next_course in adj[course]:
                 if has_cycle(next_course):
                     return True
             on_path[course] = False
