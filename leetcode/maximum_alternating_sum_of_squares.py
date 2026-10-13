@@ -4,13 +4,9 @@
 
 class Solution:
     def maxAlternatingSum(self, nums: list[int]) -> int:
-        n = len(nums)
-        squares = [num**2 for num in nums]
-        squares.sort(reverse=True)
-        score = 0
-        for i in range(n // 2):
-            score += squares[i]
-            score -= squares[n - i - 1]
-        if n % 2 != 0:
-            score += squares[n // 2]
-        return score
+        # Rearranging is free, so put the largest squares at the positive
+        # (even) positions and the smallest at the negative (odd) ones.
+        squares = sorted(num * num for num in nums)
+        half = len(nums) // 2
+        # The smallest n // 2 squares are subtracted, the rest are added.
+        return sum(squares[half:]) - sum(squares[:half])
