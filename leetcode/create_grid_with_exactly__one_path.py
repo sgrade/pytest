@@ -4,10 +4,7 @@
 
 class Solution:
     def createGrid(self, m: int, n: int) -> list[str]:
-        ans = [["#"] * n for _ in range(m)]
-        for c in range(n):
-            ans[0][c] = "."
-        for r in range(m):
-            ans[r][n - 1] = "."
-        ans = ["".join(ans[r]) for r in range(m)]
-        return ans
+        # The only path: along the top row, then down the last column.
+        top = "." * n
+        other = "#" * (n - 1) + "."
+        return [top] + [other] * (m - 1)
